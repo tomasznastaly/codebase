@@ -1,0 +1,15 @@
+<div class="filters">
+  <div class="search-bar">
+    <input [formControl]="queryControl" placeholder="Search by typing">
+    <!-- in case of real http requests, input should be handled with debounceTime+distinctUntilChanged+switchMap rxjs operators !-->
+    <button (click)="clear()">X</button>
+  </div>
+  <div class="sort-label">
+    Sort by
+  </div>
+  <div class="sorts">
+    <app-sort-button label="date" (sortDirectionChanged)="updateFilters($event, 'dateOrder')"></app-sort-button>
+    <app-sort-button label="beneficiary" (sortDirectionChanged)="updateFilters($event, 'beneficiaryOrder')"></app-sort-button>
+    <app-sort-button label="amount" (sortDirectionChanged)="updateFilters($event, 'amountOrder')"></app-sort-button>
+  </div>
+</div>

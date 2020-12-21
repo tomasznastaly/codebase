@@ -1,0 +1,12 @@
+.sorter {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-left: 20px;
+}
+
+.label {
+  margin-right: 10px;
+  font-weight: bold;
+  text-transform: capitalize;
+}

@@ -1,0 +1,21 @@
+<div class="transfer" [formGroup]="transferForm">
+  <h3>Make a transfer</h3>
+  <div>
+    <p class="input-label">from account</p>
+    <input formControlName="from">
+  </div>
+
+  <div>
+    <p class="input-label">to account</p>
+    <input formControlName="to">
+  </div>
+
+  <div>
+    <p class="input-label">amount</p>
+    <input formControlName="amount">
+  </div>
+
+  <div class="submit-btn-container">
+    <button (click)="makeTransfer()">Submit</button>
+  </div>
+</div>

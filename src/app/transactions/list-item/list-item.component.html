@@ -1,0 +1,13 @@
+<div class="item">
+  <div class="date">{{ transaction.dates.valueDate | date: 'MMM.dd' }}</div>
+  <div class="logo">
+    <img [src]="logoUrl">
+  </div>
+  <div class="beneficiary">
+    <p class="name">{{ transaction.merchant.name }}</p>
+    <p class="transaction-type">{{ transaction.transaction.type }}</p>
+  </div>
+  <div class="amount">
+    {{ transaction.transaction.amountCurrency.amount | currency:'USD' }}
+  </div>
+</div>

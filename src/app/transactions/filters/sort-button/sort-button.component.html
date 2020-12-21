@@ -1,0 +1,7 @@
+<span class="sorter">
+  <span class="label">{{ label }}</span>
+  <div class="sort-buttons">
+    <button (click)="sortDirectionChanged.emit(sorting.ASC)">ASC</button>
+    <button (click)="sortDirectionChanged.emit(sorting.DESC)">DESC</button>
+  </div>
+</span>
