@@ -1,4 +1,5 @@
 @import "variables";
+@import "media.mixins";
 
 body, html {
   margin: 0;
@@ -22,4 +23,26 @@ body, html {
 input {
   border: none;
   border-bottom: 1px solid $grey;
+}
+
+.container {
+  width: 100%;
+  margin: 0 auto;
+
+  @include sm-up {
+    width: map-get($container-width, 'sm');
+  }
+
+  @include md-up {
+    width: map-get($container-width, 'md');
+  }
+
+  @include lg-up {
+    width: map-get($container-width, 'lg');
+  }
+}
+
+.img-responsive {
+  max-width: 100%;
+  height: auto;
 }

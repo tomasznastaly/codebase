@@ -2,3 +2,15 @@ $orange: #FFA500;
 $grey: #B9B9B9;
 $red: #E20000;
 $aqua: #00BFB6;
+
+$grid-breakpoints: (
+  sm: 768px,
+  md: 992px,
+  lg: 1200px,
+);
+
+$container-width: (
+  sm: 750px,
+  md: 970px,
+  lg: 1170px,
+);

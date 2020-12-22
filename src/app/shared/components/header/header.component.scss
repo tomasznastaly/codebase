@@ -1,0 +1,14 @@
+@import "variables";
+@import "media.mixins";
+
+header {
+  background: white;
+  display: flex;
+  align-items: center;
+  padding: 10px;
+  border-bottom: 3px solid $orange;
+
+  @include md-up {
+    padding: 10px 0;
+  }
+}

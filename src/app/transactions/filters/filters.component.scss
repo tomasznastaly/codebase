@@ -1,9 +1,25 @@
+@import "media.mixins";
+
 .filters {
-  display: flex;
-  justify-content: space-between;
   padding: 20px;
+
+  @include md-up {
+    display: flex;
+    justify-content: space-between;
+  }
 }
 
 .sorts {
-  display: flex;
+  @include md-up {
+    display: flex;
+  }
+}
+
+.search-bar {
+  margin-bottom: 20px;
+
+  input {
+    width: 70%;
+    margin-right: 10px;
+  }
 }

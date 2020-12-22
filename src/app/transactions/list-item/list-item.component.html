@@ -1,7 +1,7 @@
 <div class="item">
   <div class="date">{{ transaction.dates.valueDate | date: 'MMM. dd' }}</div>
   <div class="logo">
-    <img [src]="logoUrl">
+    <img [src]="logoUrl" class="img-responsive" [alt]="transaction.merchant.name + ' logo'">
   </div>
   <div class="beneficiary">
     <p class="name">{{ transaction.merchant.name }}</p>
