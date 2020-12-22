@@ -16,6 +16,15 @@
   </div>
 
   <div class="submit-btn-container">
-    <button (click)="makeTransfer()">Submit</button>
+    <button (click)="submit()">Submit</button>
+  </div>
+
+  <div *ngIf="isSubmitted">
+    <p>Preview</p>
+    <p>Amount: {{ transferForm.value.amount }}</p>
+    <p>From: {{ transferForm.getRawValue().from }}</p>
+    <p>To: {{ transferForm.value.to }}</p>
+    <button (click)="makeTransfer()" [disabled]="hasOverDraft()">Transfer</button>
+    <p *ngIf="hasOverDraft()">Max overdraft -$500.00!</p>
   </div>
 </div>

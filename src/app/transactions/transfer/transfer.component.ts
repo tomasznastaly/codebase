@@ -4,8 +4,6 @@ import { TransactionsService } from '../transactions.service';
 import { CreditDebitIndicator, TransactionType } from '../models/transaction-metadata.model';
 import { CurrencyCode } from '../models/amount-currency.model';
 
-const defaultAccountFrom = 'Free checking(4962) - $5824.76';
-
 @Component({
   selector: 'app-transfer',
   templateUrl: './transfer.component.html',
@@ -13,6 +11,9 @@ const defaultAccountFrom = 'Free checking(4962) - $5824.76';
 })
 export class TransferComponent implements OnInit {
   transferForm: FormGroup;
+  balance = 5824.62;
+  isSubmitted = false;
+  private readonly balanceThreshold = -500;
 
   constructor(
     private readonly formBuilder: FormBuilder,
@@ -21,6 +22,14 @@ export class TransferComponent implements OnInit {
 
   ngOnInit() {
     this.buildTransferForm();
+  }
+
+  submit() {
+    this.isSubmitted = true;
+  }
+
+  hasOverDraft(): boolean {
+    return this.balance - this.transferForm.get('amount')?.value < this.balanceThreshold;
   }
 
   makeTransfer() {
@@ -43,13 +52,15 @@ export class TransferComponent implements OnInit {
       }
     });
 
+    this.updateBalance();
     this.reset();
   }
 
   private reset() {
+    this.isSubmitted = false;
     this.transferForm.patchValue({
       amount: '',
-      from: defaultAccountFrom,
+      from: this.getFromAccount(),
       to: '',
     });
   }
@@ -57,8 +68,16 @@ export class TransferComponent implements OnInit {
   private buildTransferForm() {
     this.transferForm = this.formBuilder.group({
       amount: '',
-      from: { value: defaultAccountFrom, disabled: true},
+      from: { value: this.getFromAccount(), disabled: true },
       to: '',
     });
+  }
+
+  private updateBalance() {
+    this.balance = this. balance - this.transferForm.value.amount;
+  }
+
+  private getFromAccount() {
+    return `Free checking(4962) - ${this.balance}`;
   }
 }

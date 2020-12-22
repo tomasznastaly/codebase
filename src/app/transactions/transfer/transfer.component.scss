@@ -17,10 +17,11 @@ input {
 
 .submit-btn-container {
   margin-top: 30px;
+  margin-bottom: 30px;
   display: flex;
   justify-content: flex-end;
+}
 
-  button {
-    background: $orange;
-  }
+button {
+  background: $orange;
 }
