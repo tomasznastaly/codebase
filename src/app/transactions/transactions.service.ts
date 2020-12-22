@@ -3,7 +3,7 @@ import { Transaction } from './models/transaction.model';
 import { HttpClient } from '@angular/common/http';
 import { map, withLatestFrom } from 'rxjs/operators';
 import { BehaviorSubject, Observable, of } from 'rxjs';
-import { getTime } from 'date-fns';
+import { getTime, formatISO } from 'date-fns';
 import { orderBy } from 'lodash';
 import { Filters } from './models/filters.model';
 
@@ -49,7 +49,7 @@ export class TransactionsService {
     const amountCurrency = transaction.transaction.amountCurrency;
     const isAmountInCents = Number.isInteger(amountCurrency.amount);
 
-    return isAmountInCents ? amountCurrency.amount : Math.round(Number(amountCurrency.amount));
+    return isAmountInCents ? amountCurrency.amount : Math.round(Number(amountCurrency.amount * 100)) / 100;
   }
 
   private convertDateToTimestamp(transaction: Transaction): number {
@@ -66,10 +66,11 @@ export class TransactionsService {
   }
 
   private sort(transactions: Transaction[], filters: Filters): Transaction[] {
+    console.table(transactions.map(t => t.transaction.amountCurrency.amount));
     return orderBy(
       transactions,
       [
-        (t: Transaction) => t.dates.valueDate,
+        (t: Transaction) => formatISO(t.dates.valueDate, { representation: 'date' }),
         (t: Transaction) => t.merchant.name.toLowerCase(),
         (t: Transaction) => t.transaction.amountCurrency.amount,
       ],
