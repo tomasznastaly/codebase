@@ -66,7 +66,6 @@ export class TransactionsService {
   }
 
   private sort(transactions: Transaction[], filters: Filters): Transaction[] {
-    console.table(transactions.map(t => t.transaction.amountCurrency.amount));
     return orderBy(
       transactions,
       [
