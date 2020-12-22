@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { TransactionsService } from '../transactions.service';
 import { CreditDebitIndicator, TransactionType } from '../models/transaction-metadata.model';
 import { CurrencyCode } from '../models/amount-currency.model';
@@ -67,9 +67,9 @@ export class TransferComponent implements OnInit {
 
   private buildTransferForm() {
     this.transferForm = this.formBuilder.group({
-      amount: '',
+      amount: ['', { validators: [Validators.required, Validators.min(0)] }],
       from: { value: this.getFromAccount(), disabled: true },
-      to: '',
+      to: ['', { validators: [Validators.required] }],
     });
   }
 

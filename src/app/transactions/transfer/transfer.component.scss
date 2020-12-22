@@ -3,6 +3,9 @@
 :host {
   display: block;
   background: white;
+}
+
+.transfer {
   padding: 20px;
 }
 
@@ -23,5 +26,10 @@ input {
 }
 
 button {
+  border: none;
+  padding: 10px 40px;
+  color: white;
   background: $orange;
+  border-radius: 8px;
+  cursor: pointer;
 }

@@ -1,5 +1,7 @@
-<div class="transfer" [formGroup]="transferForm">
+<div class="section-header">
   <h3>Make a transfer</h3>
+</div>
+<div class="transfer" [formGroup]="transferForm">
   <div>
     <p class="input-label">from account</p>
     <input formControlName="from">
@@ -16,7 +18,7 @@
   </div>
 
   <div class="submit-btn-container">
-    <button (click)="submit()">Submit</button>
+    <button (click)="submit()" [disabled]="transferForm.invalid">Submit</button>
   </div>
 
   <div *ngIf="isSubmitted">

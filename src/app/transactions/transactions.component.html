@@ -2,9 +2,13 @@
   <div class="transfer">
     <app-transfer></app-transfer>
   </div>
-  <div class="transactions">
-    <h3>Recent transactions</h3>
-    <app-filters></app-filters>
-    <app-list-item *ngFor="let transaction of transactions" [transaction]="transaction"></app-list-item>
+  <div>
+    <div class="section-header">
+      <h3>Recent transactions</h3>
+    </div>
+    <div class="transactions">
+      <app-filters></app-filters>
+      <app-list-item *ngFor="let transaction of transactions" [transaction]="transaction"></app-list-item>
+    </div>
   </div>
 </div>
