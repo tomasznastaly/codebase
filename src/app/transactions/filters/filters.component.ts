@@ -4,6 +4,7 @@ import { Sorting } from '../../shared/models/sorting.model';
 import { defaultFilters, FiltersService } from '../filters.service';
 import { Subscription } from 'rxjs';
 import { Filters } from '../models/filters.model';
+import { debounceTime } from 'rxjs/operators';
 
 @Component({
   selector: 'app-filters',
@@ -51,6 +52,7 @@ export class FiltersComponent implements OnInit, OnDestroy {
 
   private emitFilters() {
     const subscription = this.filtersForm.valueChanges
+      .pipe(debounceTime(300))
       .subscribe((filters: Filters) => this.filtersService.update(filters));
 
     this.subscriptions.add(subscription);

@@ -71,8 +71,8 @@ export class TransactionsService {
       [
         (t: Transaction) => t.dates.valueDate,
         (t: Transaction) => t.merchant.name.toLowerCase(),
-      (t: Transaction) => t.transaction.amountCurrency.amount,
-    ],
+        (t: Transaction) => t.transaction.amountCurrency.amount,
+      ],
       [filters.dateOrder, filters.beneficiaryOrder, filters.amountOrder]);
   }
 
