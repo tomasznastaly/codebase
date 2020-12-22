@@ -21,6 +21,7 @@
     "@angular/router": "~11.0.3",
     "@types/date-fns": "^2.6.0",
     "@types/lodash": "^4.14.165",
+    "angular-cli-ghpages": "^1.0.0-rc.1",
     "date-fns": "^2.16.1",
     "lodash": "^4.17.20",
     "rxjs": "~6.6.0",
