@@ -1,7 +1,8 @@
-<span class="sorter">
+<button class="sort-btn" (click)="updateSorting()">
   <span class="label">{{ label }}</span>
-  <div class="sort-buttons">
-    <button (click)="sortDirectionChanged.emit(sorting.ASC)">ASC</button>
-    <button (click)="sortDirectionChanged.emit(sorting.DESC)">DESC</button>
-  </div>
-</span>
+  <ng-container [ngSwitch]="currentSorting">
+    <span class="direction" *ngSwitchCase="sorting.NO_SORT"></span>
+    <span class="direction" *ngSwitchCase="sorting.ASC">&#8593;</span>
+    <span class="direction" *ngSwitchCase="sorting.DESC">&darr;</span>
+  </ng-container>
+</button>

@@ -1,8 +1,8 @@
 <div class="filters">
   <div class="search-bar">
-    <input [formControl]="queryControl" placeholder="Search by typing">
-    <!-- in case of real http requests, input should be handled with debounceTime+distinctUntilChanged+switchMap rxjs operators !-->
-    <button (click)="clear()">X</button>
+    <input [formControl]="queryControl" placeholder="Search by typing...">
+    <!-- in case of real http requests, input should be handled with debounceTime+distinctUntilChanged+switchMap rxjs operators to prevent race conditions !-->
+    <button *ngIf="queryControl.value.length > 0" (click)="clear()" class="clear-btn">X</button>
   </div>
   <div class="sort-label">
     Sort by

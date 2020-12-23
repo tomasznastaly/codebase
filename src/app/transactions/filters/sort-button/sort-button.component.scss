@@ -1,12 +1,33 @@
-.sorter {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-left: 20px;
-}
+@import "variables";
+@import "media.mixins";
 
 .label {
-  margin-right: 10px;
   font-weight: bold;
-  text-transform: capitalize;
+  text-transform: uppercase;
+  margin-left: 5px;
+}
+
+.direction {
+  width: 30px;
+  font-weight: bold;
+}
+
+.sort-btn {
+  display: flex;
+  align-content: space-between;
+  align-items: center;
+  background: white;
+  padding: 5px;
+  cursor: pointer;
+  border: 1px solid $grey;
+  width: 100%;
+  margin-bottom: 10px;
+
+  &:focus {
+    outline: 0;
+  }
+
+  @include md-up {
+    margin-bottom: 0;
+  }
 }

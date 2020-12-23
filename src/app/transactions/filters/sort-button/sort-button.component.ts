@@ -10,5 +10,18 @@ import { Sorting } from '../../../shared/models/sorting.model';
 export class SortButtonComponent {
   @Input() label: string;
   @Output() sortDirectionChanged = new EventEmitter<Sorting>();
+  currentSorting  = Sorting.NO_SORT;
   readonly sorting = Sorting;
+
+  updateSorting() {
+    if (this.currentSorting === Sorting.NO_SORT) {
+      this.currentSorting = Sorting.ASC;
+    } else if (this.currentSorting === Sorting.ASC) {
+      this.currentSorting = Sorting.DESC;
+    } else {
+      this.currentSorting = Sorting.NO_SORT;
+    }
+
+    this.sortDirectionChanged.emit(this.currentSorting);
+  }
 }

@@ -8,6 +8,6 @@
     <p class="transaction-type">{{ transaction.transaction.type }}</p>
   </div>
   <div class="amount">
-    {{ transaction.transaction.amountCurrency.amount | currency:'USD' }}
+    -{{ transaction.transaction.amountCurrency.amount | currency:'USD' }}
   </div>
 </div>

@@ -1,11 +1,12 @@
 @import "media.mixins";
 
 .filters {
-  padding: 20px;
+  padding: 20px 0;
 
   @include md-up {
     display: flex;
     justify-content: space-between;
+    align-items: center;
   }
 }
 
@@ -17,9 +18,19 @@
 
 .search-bar {
   margin-bottom: 20px;
+  display: flex;
+  justify-content: space-between;
 
   input {
-    width: 70%;
     margin-right: 10px;
   }
+
+  @include md-up {
+    margin-bottom: 0;
+  }
+}
+
+.clear-btn {
+  border: none;
+  background: white;
 }

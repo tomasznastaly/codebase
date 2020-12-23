@@ -66,14 +66,29 @@ export class TransactionsService {
   }
 
   private sort(transactions: Transaction[], filters: Filters): Transaction[] {
+    const appliedSorting = [
+      {
+        sortOrder: filters.dateOrder,
+        iterator: (t: Transaction) => formatISO(t.dates.valueDate, { representation: 'date' }),
+      },
+      {
+        sortOrder: filters.beneficiaryOrder,
+        iterator: (t: Transaction) => t.merchant.name.toLowerCase(),
+      },
+      {
+        sortOrder: filters.amountOrder,
+        iterator: (t: Transaction) => t.transaction.amountCurrency.amount,
+      },
+    ].filter(def => Boolean(def.sortOrder));
+
+    const iterators = appliedSorting.map(s => s.iterator);
+    const orders = appliedSorting.map(s => s.sortOrder as 'asc' | 'desc');
+
     return orderBy(
       transactions,
-      [
-        (t: Transaction) => formatISO(t.dates.valueDate, { representation: 'date' }),
-        (t: Transaction) => t.merchant.name.toLowerCase(),
-        (t: Transaction) => t.transaction.amountCurrency.amount,
-      ],
-      [filters.dateOrder, filters.beneficiaryOrder, filters.amountOrder]);
+      iterators,
+      orders,
+    );
   }
 
   private loadJSONtransactions() {
